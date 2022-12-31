@@ -1,22 +1,29 @@
 function convertTable() {
   //get text from textarea
   let inputText = document.getElementById("txtinput").value;
+
   //splite new line by regex
   let newLineArr = inputText.split(/\n/g);
+
   //find length
   let newLineArrLen = newLineArr.length;
+
   //make variable
   let HTMLTableOutput = "";
+
   // looping for create new line on display
   for (let i = 0; i < newLineArrLen; i++) {
     HTMLTableOutput += "<tr><td>" + newLineArr[i] + "</td></tr>" + "\n";
   }
+
   //replace comma with table tag form
   HTMLTableOutput = HTMLTableOutput.replace(/,/g, "</td><td>");
 
   if (HTMLTableOutput !== "<tr><td></td></tr>\n") {
     document.getElementById("output").innerHTML =
       "<table style=&#34width:100%&#34>\n" + HTMLTableOutput + "</table>";
+      document.getElementById("outputTable").innerHTML =
+        "<table style=&#34width:100%&#34>\n" + HTMLTableOutput + "</table>";
   } else {
     alert("empty data!");
   }
@@ -41,4 +48,5 @@ function clearFunction() {
   let x = document.getElementById("output");
   x = ""
   document.getElementById("output").innerHTML = x;
+  document.getElementById("outputTable").innerHTML = x;
 }
